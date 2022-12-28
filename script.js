@@ -31,6 +31,41 @@ function playRound(playerSelection, computerSelection) {
     // else return "You Lose! Rock beats Scissors"
 }
 
-console.log(playRound("sCiSsoRs", getComputerChoice()))
+// console.log(playRound("sCiSsoRs", getComputerChoice()))
 
-function game()
+
+// Call playRound 5 times
+    // Get player input and feed it to playRound function
+// Track score after each round.
+// Announce winner at the end
+
+
+
+function game() {
+let playerScore = 0
+let computerScore = 0
+
+while (playerScore < 5 && computerScore < 5) {
+    
+    let playerInput = prompt("Choose, rock, paper or scissors?")
+    let roundResult = playRound(playerInput, getComputerChoice())
+
+    if (roundResult.includes("Win!")) {
+        playerScore += 1
+    }
+    else if (roundResult.includes("Lose!")) {
+        computerScore += 1
+    }
+    console.log(roundResult)
+    console.log(`The score is ${playerScore} to ${computerScore}`)
+}
+
+if (playerScore > computerScore) {
+    console.log(`You won the game! You were first to five.`)
+}
+else {
+    console.log("You lost the game! The computer was first to five.")
+}
+}
+
+game()
