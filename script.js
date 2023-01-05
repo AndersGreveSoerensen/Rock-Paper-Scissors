@@ -5,41 +5,33 @@ function getComputerChoice() {
     else { return "scissors" }
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+    let computerSelection = getComputerChoice()
+    
     let playerChoice = playerSelection.toLowerCase()
     if (playerChoice === computerSelection) {
         return `Draw! You both selected ${playerChoice}`
     }
     else if (playerChoice == "paper" && computerSelection == "rock") {
-        return "You Win! Paper beats Rock."
+        return "You Win This Round! Paper beats Rock."
     }
     else if (playerChoice == "paper" && computerSelection == "scissors") {
-        return "You Lose! Scissors beats Paper"
+        return "You Lose This Round! Scissors beats Paper"
     }
     else if (playerChoice == "rock" && computerSelection == "scissors") {
-        return "You Win! Rock beats Scissors!"
+        return "You Win This Round! Rock beats Scissors!"
     }
     else if (playerChoice == "rock" && computerSelection == "paper") {
-        return "You Lose! Paper beats Rock"
+        return "You Lose This Round! Paper beats Rock"
     }
     else if (playerChoice == "scissors" && computerSelection == "paper") {
-        return "You Win! Scissors beats Paper"
+        return "You Win This Round! Scissors beats Paper"
     }
     else if (playerChoice == "scissors" && computerSelection == "rock") {
-        return "You Lose! Rock beats Scissors"
+        return "You Lose This Round! Rock beats Scissors"
     }
     // else return "You Lose! Rock beats Scissors"
 }
-
-// console.log(playRound("sCiSsoRs", getComputerChoice()))
-
-
-// Call playRound 5 times
-    // Get player input and feed it to playRound function
-// Track score after each round.
-// Announce winner at the end
-
-
 
 function game() {
 let playerScore = 0
@@ -68,4 +60,14 @@ else {
 }
 }
 
-game()
+// game()
+
+
+const btn = document.querySelectorAll("button");
+btn.forEach(button => button.addEventListener("click", (e) => {
+    if (e.target.id  == "rock") {console.log(playRound(`${e.target.id}`))}
+    else if (e.target.id == "paper") {console.log(playRound(`${e.target.id}`))}
+    else {console.log(playRound(`${e.target.id}`))}
+}))
+
+
