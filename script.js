@@ -34,52 +34,17 @@ function playRound(playerSelection) {
 }
 
 
-
-function game() {
 let playerScore = 0
 let computerScore = 0
 
-while (playerScore < 5 && computerScore < 5) {
-    // const btn = document.querySelectorAll("button");
-
-    // btn.forEach(button => button.addEventListener("click", (e) => {
-    //     if (e.target.id  == "rock") {let playerInput = e.target.id}
-    //     else if (e.target.id == "paper") {let playerInput = e.target.id}
-    //     else {let playerInput = e.target.id}
-    //     }))
-
-    // let playerInput = prompt("Choose, rock, paper or scissors?")
-    // let roundResult = playRound(playerInput)
-
-    // if (roundResult.includes("Win")) {
-    //     playerScore += 1
-    // }
-    // else if (roundResult.includes("Lose")) {
-    //     computerScore += 1
-    // }
-    // console.log(roundResult)
-    // console.log(`The score is ${playerScore} to ${computerScore}`)
-}
-
-if (playerScore > computerScore) {
-    console.log(`You won the game! You were first to five.`)
-}
-else {
-    console.log("You lost the game! The computer was first to five.")
-}
-}
-
-// game()
-
-
-let playerScore = 0
-let computerScore = 0
+let rpsButtonContainer = document.querySelector("#rpsButtonContainer")
+let displayRoundResults = document.querySelector("#roundResults")
+let displayCurrentScore = document.querySelector("#currentScore")
+let resultContainer = document.querySelector("#resultContainer")
+let rpsButtons = document.querySelectorAll(".rpsButton")
+let rockButton = document.querySelector("#rock")
 
 function gameState(e) {
-    
-    let displayRoundResults = document.querySelector("#roundResults")
-    let displayCurrentScore = document.querySelector("#currentScore")
-
     let roundResult = playRound(e.target.id)
 
     displayRoundResults.textContent = roundResult
@@ -95,24 +60,40 @@ function gameState(e) {
 
 function shouldGameEnd() {
     if (playerScore == 5 || computerScore == 5) {
-    let resultContainer = document.querySelector("#resultContainer")
-    let gameResult = document.createElement("div")
-    resultContainer.appendChild(gameResult)
-    if (playerScore > computerScore) {
-        gameResult.textContent = "You win the game! You were first to 5."
-    }
-    else {gameResult.textContent = "You lost the game! The computer was first to 5."}
-    }
 
+        let gameResult = document.createElement("div")
+        gameResult.setAttribute("id", "gameResult")
+        resultContainer.appendChild(gameResult)
+        if (playerScore > computerScore) {
+            gameResult.textContent = "You win the game! You were first to 5."
+        }
+        else {gameResult.textContent = "You lost the game! The computer was first to 5."}
+        
+        rpsButtons.forEach((button) => {button.classList.add("hide")} )
+        resetButton.textContent = "Play Again!"
+    }
 };
 
-// function gameReset(e) {
 
-// };
+function gameReset(e) {
+    if (rockButton.classList.contains("hide")) {
+        rpsButtons.forEach((button) => button.classList.remove("hide"))
+    }
+        playerScore = 0
+        computerScore = 0
+        displayCurrentScore.textContent = ""
+        displayRoundResults.textContent = ""
+        
+        let gameResult = document.getElementById("gameResult")
+        if (gameResult) {
+            gameResult.remove()
+        };
+    resetButton.textContent = "Reset Game"
+    };
 
 let resetButton = document.querySelector("#resetButton");
-// resetButton.addEventListener("click", )
+resetButton.addEventListener("click", gameReset)
 
-const btn = document.querySelectorAll("button");
+const btn = document.querySelectorAll(".rpsButton");
 btn.forEach(button => button.addEventListener("click", gameState))
 
