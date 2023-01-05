@@ -9,30 +9,30 @@ function playRound(playerSelection) {
     let computerSelection = getComputerChoice()
     
     let playerChoice = playerSelection.toLowerCase()
+    let roundEndText = ""
     if (playerChoice === computerSelection) {
-        return `Draw! You both selected ${playerChoice}`
+        roundEndText = `You both selected ${playerChoice}. Draw!`
     }
     else if (playerChoice == "paper" && computerSelection == "rock") {
-        return "You Win This Round! Paper beats Rock."
+        roundEndText = "Paper beats Rock. You Win This Round!"
     }
     else if (playerChoice == "paper" && computerSelection == "scissors") {
-        return "You Lose This Round! Scissors beats Paper"
+        roundEndText = "Scissors beats Paper. You Lose This Round!"
     }
     else if (playerChoice == "rock" && computerSelection == "scissors") {
-        return "You Win This Round! Rock beats Scissors!"
+        roundEndText = " Rock beats Scissors. You Win This Round!"
     }
     else if (playerChoice == "rock" && computerSelection == "paper") {
-        return "You Lose This Round! Paper beats Rock"
+        roundEndText = "Paper beats Rock. You Lose This Round!"
     }
     else if (playerChoice == "scissors" && computerSelection == "paper") {
-        return "You Win This Round! Scissors beats Paper"
+        roundEndText = "Scissors beats Paper. You Win This Round!"
     }
     else if (playerChoice == "scissors" && computerSelection == "rock") {
-        return "You Lose This Round! Rock beats Scissors"
+        roundEndText = "Rock beats Scissors. You Lose This Round!"
     }
-    // else return "You Lose! Rock beats Scissors"
+    return [roundEndText, playerSelection, computerSelection]
 }
-
 
 let playerScore = 0
 let computerScore = 0
@@ -43,16 +43,42 @@ let displayCurrentScore = document.querySelector("#currentScore")
 let resultContainer = document.querySelector("#resultContainer")
 let rpsButtons = document.querySelectorAll(".rpsButton")
 let rockButton = document.querySelector("#rock")
+let playerImage = document.querySelector("#playerImage")
+let computerImage = document.querySelector("#computerImage")
 
 function gameState(e) {
-    let roundResult = playRound(e.target.id)
+    let roundResults = playRound(e.target.id)
+    let roundEndText = roundResults[0]
 
-    displayRoundResults.textContent = roundResult
 
-    if (roundResult.includes("Win")) {playerScore += 1}
-    else if (roundResult.includes("Lose")) {computerScore += 1}
+    displayRoundResults.textContent = roundEndText
+
+    if (roundEndText.includes("Win")) {playerScore += 1}
+    else if (roundEndText.includes("Lose")) {computerScore += 1}
     
     displayCurrentScore.textContent = `The score is: ${playerScore} ${computerScore}`
+
+    if (e.target.id == "rock") {
+        playerImage.src = "rps-pictures/rpsRock.png"
+    }
+    else if (e.target.id == "paper") {
+        playerImage.src = "rps-pictures/rpsPaper.png"
+    }
+    else {
+        playerImage.src = "rps-pictures/rpsScissors.png"
+    }
+
+    console.log(roundResults[2])
+
+    if (roundResults[2] == "rock") {
+        computerImage.src = "rps-pictures/rpsRock.png"
+    }
+    else if (roundResults[2] == "paper") {
+        computerImage.src = "rps-pictures/rpsPaper.png"
+    }
+    else {
+        computerImage.src = "rps-pictures/rpsScissors.png"
+    }
 
     shouldGameEnd()
 };
@@ -89,6 +115,9 @@ function gameReset(e) {
             gameResult.remove()
         };
     resetButton.textContent = "Reset Game"
+
+    playerImage.src = ""
+    computerImage.src = ""
     };
 
 let resetButton = document.querySelector("#resetButton");

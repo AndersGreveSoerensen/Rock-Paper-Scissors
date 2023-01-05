@@ -9,15 +9,24 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <div id="titleContainer">
+        <h1>Rock, Paper, Scissors</h1>
+    </div>
+    <div id="textAndImageContainer">
+        <img id="playerImage">
+        <div id="resultContainer">
+            <p id="roundResults"></p>
+            <p id="currentScore"></p>
+        </div>
+        <img id="computerImage">
+    </div>
     <div id="rpsButtonContainer">
         <button id="rock" class="rpsButton">Rock</button>
         <button id="paper" class="rpsButton">Paper</button>
         <button id="scissors" class="rpsButton">Scissors</button> 
     </div>
-    <div id="resultContainer">
-        <p id="roundResults"></p>
-        <p id="currentScore"></p>
+    <div id="resetButtonContainer">
+        <button id="resetButton">Reset Game</button>
     </div>
-    <button id="resetButton">Reset Game</button>
 </body>
 </html>
