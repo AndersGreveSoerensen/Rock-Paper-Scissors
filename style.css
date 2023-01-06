@@ -16,15 +16,24 @@ body {
 
 #titleContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-bottom: 50px;
+}
+
+#titleContainer h1 {
+    margin-bottom: 0
+}
+
+#titleContainer p {
+    font-size: 20px;
 }
 
 #textAndImageContainer {
     display: flex;
     justify-content: center;
-    border: 5px solid var(--theme-blue);
-    /* height: 300px; */
+    border: 8px solid var(--theme-blue);
     width: 70%;
     margin-bottom: 50px;
     background-color: white;
@@ -56,18 +65,18 @@ body {
     display: flex;
     justify-content: center;
     column-gap: 20px;
-    /* border: 1px solid black; */
     margin-bottom: 20px;
 }
 
 .rpsButton {
     height: 30px;
     width: 80px;
-    /* background: linear-gradient(90deg, var(--theme-dark) 25%, white); */
     background-color: var(--theme-dark);
     color: var(--theme-blue);
-    border: 1px solid var(--theme-blue);
+    border: 2px solid var(--theme-blue);
     border-radius: 5px;
+    font-weight: 700;
+    font-size: 16px;
 }
 
 .rpsButton:hover {
@@ -79,17 +88,17 @@ body {
 #resetButtonContainer {
     display: flex;
     justify-content: center;
-    /* border: 1px solid black; */
 }
 
 #resetButton {
     height: 30px;
     width: 110px;
-    /* background: linear-gradient(90deg, var(--theme-dark) 25%, white); */
     background-color: var(--theme-dark);
     color: var(--theme-blue);
-    border: 1px solid var(--theme-blue);
+    border: 2px solid var(--theme-blue);
     border-radius: 5px;
+    font-weight: 700;
+    font-size: 16px;
 }
 
 #resetButton:hover {
