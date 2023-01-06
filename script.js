@@ -45,18 +45,23 @@ let rpsButtons = document.querySelectorAll(".rpsButton")
 let rockButton = document.querySelector("#rock")
 let playerImage = document.querySelector("#playerImage")
 let computerImage = document.querySelector("#computerImage")
+let playerImageText = document.querySelector("#playerImageText")
+let computerImageText = document.querySelector("#computerImageText")
+let playerImageContainer = document.querySelector("#playerImageContainer")
+let computerImageContainer = document.querySelector("#computerImageContainer")
+let makeSelectionHeading = document.querySelector("#makeSelectionHeading")
+
 
 function gameState(e) {
     let roundResults = playRound(e.target.id)
     let roundEndText = roundResults[0]
-
 
     displayRoundResults.textContent = roundEndText
 
     if (roundEndText.includes("Win")) {playerScore += 1}
     else if (roundEndText.includes("Lose")) {computerScore += 1}
     
-    displayCurrentScore.textContent = `The score is: ${playerScore} ${computerScore}`
+    displayCurrentScore.textContent = `The score is: ${playerScore} to ${computerScore}`
 
     if (e.target.id == "rock") {
         playerImage.src = "rps-pictures/rpsRock.png"
@@ -80,6 +85,15 @@ function gameState(e) {
         computerImage.src = "rps-pictures/rpsScissors.png"
     }
 
+    playerImageText.classList.remove("hide")
+    computerImageText.classList.remove("hide")
+    playerImageContainer.classList.remove("hide")
+    computerImageContainer.classList.remove("hide")
+    resultContainer.classList.remove("hide")
+    makeSelectionHeading.classList.add("hide")
+
+    
+
     shouldGameEnd()
 };
 
@@ -87,7 +101,7 @@ function gameState(e) {
 function shouldGameEnd() {
     if (playerScore == 5 || computerScore == 5) {
 
-        let gameResult = document.createElement("div")
+        let gameResult = document.createElement("p")
         gameResult.setAttribute("id", "gameResult")
         resultContainer.appendChild(gameResult)
         if (playerScore > computerScore) {
@@ -118,6 +132,13 @@ function gameReset(e) {
 
     playerImage.src = ""
     computerImage.src = ""
+
+    playerImageText.classList.add("hide")
+    computerImageText.classList.add("hide")
+    playerImageContainer.classList.add("hide")
+    computerImageContainer.classList.add("hide")
+    resultContainer.classList.add("hide")
+    makeSelectionHeading.classList.remove("hide")
     };
 
 let resetButton = document.querySelector("#resetButton");

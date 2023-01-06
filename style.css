@@ -1,13 +1,107 @@
+:root {
+    --theme-dark: rgb(46, 48, 50);
+    --theme-blue: rgb(69, 86, 125);
+    --theme-red: rgb(190, 49, 68)
+}
+
 body {
     display: flex;
     flex-direction: column;
+    background-color: var(--theme-dark);
+    color: white;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+#titleContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
 }
 
 #textAndImageContainer {
     display: flex;
+    justify-content: center;
+    border: 5px solid var(--theme-blue);
+    /* height: 300px; */
+    width: 70%;
+    margin-bottom: 50px;
+    background-color: white;
+    color: black;
+    flex: 0 0 300px;
+
 }
 
+.imageContainer {
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+    margin: 0 100px;
+    text-align: center;
+}
+
+#resultContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 350px;
+}
+
+#resultContainer p {
+    text-align: center;
+}
+
+#rpsButtonContainer {
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+    /* border: 1px solid black; */
+    margin-bottom: 20px;
+}
+
+.rpsButton {
+    height: 30px;
+    width: 80px;
+    /* background: linear-gradient(90deg, var(--theme-dark) 25%, white); */
+    background-color: var(--theme-dark);
+    color: var(--theme-blue);
+    border: 1px solid var(--theme-blue);
+    border-radius: 5px;
+}
+
+.rpsButton:hover {
+    cursor: pointer;
+    border-color: var(--theme-red);
+    color: var(--theme-red)
+}
+
+#resetButtonContainer {
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid black; */
+}
+
+#resetButton {
+    height: 30px;
+    width: 110px;
+    /* background: linear-gradient(90deg, var(--theme-dark) 25%, white); */
+    background-color: var(--theme-dark);
+    color: var(--theme-blue);
+    border: 1px solid var(--theme-blue);
+    border-radius: 5px;
+}
+
+#resetButton:hover {
+    cursor: pointer;
+    border-color: var(--theme-red);
+    color: var(--theme-red)
+}
+
+#textAndImageContainer h2 {
+    align-self: center;
+}
 
 .hide {
-    display: none;
+    display: none !important;
 }

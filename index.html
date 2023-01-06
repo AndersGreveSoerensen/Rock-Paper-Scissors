@@ -13,12 +13,19 @@
         <h1>Rock, Paper, Scissors</h1>
     </div>
     <div id="textAndImageContainer">
-        <img id="playerImage">
-        <div id="resultContainer">
+        <h2 id="makeSelectionHeading">Make Your Selection!</h2>
+        <div id="playerImageContainer" class="imageContainer hide">
+            <p id="playerImageText" class="hide">You Selected:</p>
+            <img id="playerImage">
+        </div>
+        <div id="resultContainer" class="hide">
             <p id="roundResults"></p>
             <p id="currentScore"></p>
         </div>
-        <img id="computerImage">
+        <div id="computerImageContainer" class="imageContainer hide">
+            <p id="computerImageText" class="hide">The Computer Selected:</p>
+            <img id="computerImage">
+        </div>
     </div>
     <div id="rpsButtonContainer">
         <button id="rock" class="rpsButton">Rock</button>
